@@ -1,0 +1,4 @@
+redis:
+  operator:
+    image:
+      _default: "quay.io/spotahome/redis-operator:v1.0.0"
