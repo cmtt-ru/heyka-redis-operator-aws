@@ -14,7 +14,7 @@ jobs:
     runs-on: self-hosted
     env:
       WERF_KUBE_CONTEXT: "main-aws"
-      ENV: "redis-operator"
+      KUBE_NS: "redis-operator"
 
     steps:
       - name: Checkout code
@@ -27,5 +27,7 @@ jobs:
           channel: alpha
           env: ${{ env.ENV }}
         env:
+          WERF_RELEASE: ${{ env.KUBE_NS }}
+          WERF_NAMESPACE: ${{ env.KUBE_NS }}
           WERF_STAGES_STORAGE: "ghcr.io/cmtt-ru/stages-${{ github.event.repository.name }}"
           WERF_IMAGES_REPO: "ghcr.io/cmtt-ru/${{ github.event.repository.name }}"
