@@ -17,6 +17,10 @@ jobs:
       ENV: "redis-operator"
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: werf converge
         uses: werf/actions/converge@v1.1
         with:
