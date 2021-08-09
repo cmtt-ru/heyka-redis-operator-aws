@@ -17,6 +17,8 @@ spec:
         app: redisoperator
     spec:
       serviceAccountName: redisoperator
+      imagePullSecrets:
+        - name: registrysecret
       containers:
         - image: {{ .Values.werf.image.operator }}
           imagePullPolicy: IfNotPresent
