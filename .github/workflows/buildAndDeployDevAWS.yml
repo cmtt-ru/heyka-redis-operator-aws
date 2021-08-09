@@ -1,5 +1,4 @@
 name: Build and deploy
-
 on:
   push:
     branches:
@@ -7,27 +6,19 @@ on:
   pull_request:
     branches:
       - master
-
 jobs:
   buildAndDeploy2Dev:
     name: "Build and Deploy"
     runs-on: self-hosted
     env:
       WERF_KUBE_CONTEXT: "main-aws"
-      KUBE_NS: "redis-operator"
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - name: werf converge
-        uses: werf/actions/converge@v1.1
+        uses: werf/actions/converge@v1.2
         with:
           channel: alpha
-          env: ${{ env.ENV }}
-        env:
-          WERF_RELEASE: ${{ env.KUBE_NS }}
-          WERF_NAMESPACE: ${{ env.KUBE_NS }}
-          WERF_STAGES_STORAGE: "ghcr.io/cmtt-ru/stages-${{ github.event.repository.name }}"
-          WERF_IMAGES_REPO: "ghcr.io/cmtt-ru/${{ github.event.repository.name }}"
+          env: stage

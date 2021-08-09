@@ -1,3 +1,8 @@
 project: redis-operator
 configVersion: 1
+deploy:
+  helmRelease: redis-operator
+  namespace: redis-operator
 ---
+image: operator
+from: quay.io/spotahome/redis-operator:v1.0.0
