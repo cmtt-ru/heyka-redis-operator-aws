@@ -1,4 +1,4 @@
-name: Build and deploy
+name: Build and deploy AWS
 on:
   push:
     branches:
@@ -8,7 +8,7 @@ on:
       - master
 jobs:
   buildAndDeploy2Dev:
-    name: "Build and Deploy"
+    name: "Build and Deploy AWS"
     runs-on: self-hosted
     env:
       WERF_KUBE_CONTEXT: "main-aws"
@@ -20,5 +20,5 @@ jobs:
       - name: werf converge
         uses: werf/actions/converge@v1.2
         with:
-          channel: alpha
+          channel: beta
           env: stage
